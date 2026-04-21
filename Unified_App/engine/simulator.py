@@ -563,6 +563,8 @@ def run_batch_simulation(
     Process multiple RCP files across multiple distribution types.
     Returns path to the saved master CSV.
     """
+    batch_start_time = time.perf_counter()
+
     jobs = [(rcp, dist) for dist in distribution_types for rcp in rcp_files]
     total = len(jobs)
     results = []
@@ -616,11 +618,17 @@ def run_batch_simulation(
             if progress_cb:
                 progress_cb(completed, total, f"[{completed}/{total}] {os.path.basename(rcp)} ({dist})")
 
+    total_runtime_seconds = time.perf_counter() - batch_start_time
+    runtime_suffix = f"_runtime_{total_runtime_seconds:.2f}s".replace(".", "_")
+
     out_path = Path(output_dir)
     out_path.mkdir(parents=True, exist_ok=True)
     if not output_filename.endswith(".csv"):
         output_filename += ".csv"
-    save_path = out_path / output_filename
+
+    output_stem = Path(output_filename).stem
+    output_ext = Path(output_filename).suffix or ".csv"
+    save_path = out_path / f"{output_stem}{runtime_suffix}{output_ext}"
 
     if results:
         all_df = pd.concat(results, ignore_index=True)
