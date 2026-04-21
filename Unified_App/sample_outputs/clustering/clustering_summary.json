@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "created_at_utc": "2026-04-21T01:49:57+00:00",
+    "input_csv": "C:\\Users\\aidan\\Documents\\Independent Study\\Simulator Code Correct Version\\output\\Output 10k Sims Divide by 2\\Master_Output_File_CSV_Version.csv",
+    "output_dir": "C:\\Users\\aidan\\Documents\\Independent Study\\Unified_App\\sample_outputs\\clustering"
+  },
+  "settings": {
+    "methods": [
+      "pert",
+      "bb2",
+      "lognormal"
+    ],
+    "complexity_features": [
+      "SP",
+      "LA",
+      "AD",
+      "TF"
+    ],
+    "dummy_features": [
+      "is_beta",
+      "is_lognormal"
+    ],
+    "percentiles_used": [
+      "p1",
+      "p10",
+      "p20",
+      "p25",
+      "p30",
+      "p40",
+      "p50",
+      "p60",
+      "p70",
+      "p75",
+      "p80",
+      "p90",
+      "p95",
+      "p99",
+      "p99_9"
+    ],
+    "feature_weights": {
+      "complexity_weight": 1.0,
+      "dummy_weight": 0.5
+    }
+  },
+  "clustering": {
+    "selected_k": 5,
+    "silhouette_by_k": [
+      {
+        "k": 2,
+        "silhouette": 0.2600428152011049
+      },
+      {
+        "k": 3,
+        "silhouette": 0.28556320800226204
+      },
+      {
+        "k": 4,
+        "silhouette": 0.28843496098665233
+      },
+      {
+        "k": 5,
+        "silhouette": 0.29319779231381504
+      },
+      {
+        "k": 6,
+        "silhouette": 0.2500130920344589
+      },
+      {
+        "k": 7,
+        "silhouette": 0.24944881153935405
+      },
+      {
+        "k": 8,
+        "silhouette": 0.26205456751339806
+      }
+    ]
+  },
+  "choice_tree": {
+    "status": "trained_holdout",
+    "accuracy": 0.891869918699187,
+    "macro_f1": 0.620704845814978,
+    "n_train": 9840,
+    "n_test": 2460,
+    "class_counts": {
+      "bb2": 12000,
+      "lognormal": 300
+    }
+  }
+}

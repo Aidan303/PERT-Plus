@@ -1,0 +1,19 @@
+|--- SP <= 0.22
+|   |--- is_beta <= 0.50
+|   |   |--- SP <= 0.12
+|   |   |   |--- is_lognormal <= 0.50
+|   |   |   |   |--- class: lognormal
+|   |   |   |--- is_lognormal >  0.50
+|   |   |   |   |--- class: lognormal
+|   |   |--- SP >  0.12
+|   |   |   |--- is_lognormal <= 0.50
+|   |   |   |   |--- class: bb2
+|   |   |   |--- is_lognormal >  0.50
+|   |   |   |   |--- class: lognormal
+|   |--- is_beta >  0.50
+|   |   |--- class: bb2
+|--- SP >  0.22
+|   |--- LA <= 0.00
+|   |   |--- class: bb2
+|   |--- LA >  0.00
+|   |   |--- class: bb2
