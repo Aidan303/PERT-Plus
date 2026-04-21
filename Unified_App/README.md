@@ -47,6 +47,36 @@ conda activate path_gen_build
 python app.py
 ```
 
+## Build Release (Reusable Script)
+
+From the `Unified_App` folder:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\build_release.ps1
+```
+
+Default behavior:
+
+- cleans `build/` and `dist/`
+- builds a one-file executable (`PERT+.exe`)
+- creates a cleaned release folder at `release/PERT+_windows_x64`
+- copies the executable and user docs into the release folder
+- writes `SHA256SUM.txt` in the release folder
+- removes `dist/` and `build/` after packaging
+
+Common options:
+
+```powershell
+# Keep dist/ after packaging
+powershell -ExecutionPolicy Bypass -File .\tools\build_release.ps1 -KeepDist
+
+# Keep build/ after packaging
+powershell -ExecutionPolicy Bypass -File .\tools\build_release.ps1 -KeepBuild
+
+# Build with a different conda environment name
+powershell -ExecutionPolicy Bypass -File .\tools\build_release.ps1 -CondaEnvName my_env
+```
+
 ## Portable Settings
 
 PERT+ supports a simple portable mode. If a `settings.ini` file exists next to the executable, the app stores its settings there instead of using the normal platform settings location.
