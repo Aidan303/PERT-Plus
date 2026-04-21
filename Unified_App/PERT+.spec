@@ -3,7 +3,7 @@
 from pathlib import Path
 from PyInstaller.utils.hooks import collect_submodules
 
-project_dir = Path(__file__).resolve().parent
+project_dir = Path(globals().get("SPECPATH", ".")).resolve()
 
 hiddenimports = []
 hiddenimports += collect_submodules("engine")
